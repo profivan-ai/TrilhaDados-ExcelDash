@@ -43,29 +43,35 @@
       margin-bottom: 1rem;
     }
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-    }
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-    nav ul li {
-      margin: 0.5rem 0;
-    }
+nav ul li {
+  margin-bottom: 0.5rem;
+}
 
     nav ul li button {
       width: 100%;
-      background: none;
+      background: #2c3e50;
       border: none;
       color: white;
       text-align: left;
-      font-size: 1rem;
+      font-size: 0.95rem;
       cursor: pointer;
-      padding: 0.3rem 0.5rem;
+      padding: 0.5rem;
+      border-radius: 6px;
       transition: background 0.3s;
     }
 
     nav ul li button:hover {
-      background-color: #2c3e50;
+      background-color: #1abc9c;
+    }
+
+    nav ul li button.active {
+      background-color: #16a085;
     }
 
     .content {
@@ -75,8 +81,9 @@
     }
 
     .video-frame {
-      width: 80%;
-      height: 500px;
+      width: 100%;
+      max-width: 100%;
+      height: 450px;
       border: none;
       border-radius: 12px;
     }
@@ -84,14 +91,9 @@
     .exercise-box {
       background-color: #ecf0f1;
       padding: 1rem;
-      margin: 1rem;
+      margin: 1rem 0;
       border-left: 4px solid #3498db;
     }
-
-    nav ul li button.active {
-      background-color: #1abc9c;
-    }
-
 
     @media (max-width: 768px) {
       nav {
@@ -103,7 +105,7 @@
       }
 
       .video-frame {
-        height: 300px;
+        height: 250px;
       }
     }
   </style>
@@ -117,42 +119,83 @@
     <nav>
       <h2>Vídeos da Playlist</h2>
       <ul>
-        <li><button onclick="loadVideo('E_mzcCqrK_I', event)">1. Estatistica Basica</button></li>
-        <li><button onclick="loadVideo('w512OeahfzE', event)">2. Mapa de Calor </button></li>
-        <li><button onclick="loadVideo('Cz7bh-wTeOU', event)">3. Procv  </button></li>
-        <li><button onclick="loadVideo('-IcY4AHug6M', event)">4. Tabela Dinamica </button></li>
-        <li><button onclick="loadVideo('V2K63eFspuI', event)">5. Tratamento de Dados </button></li>
-        <li><button onclick="loadVideo('7AaZLClN7p0', event)">5. Tratamento de Dados - Outro Exemplo </button></li>
-        <li><button onclick="loadVideo('TvovbjBKiQs', event)">6. Dashboard Parte 1  </button></li>        
-        <li><button onclick="loadVideo('NXrLbWhUYG8', event)">7. Dashboard Parte 2 </button></li>   
-        <li><button onclick="loadVideo('jCKCo2OCkCM', event)">8. Outro exemplo Dashboard </button></li>           
+        <li><button onclick="loadVideo('E_mzcCqrK_I', event, `
+          <strong>Exercício:</strong> Calcule <em>média</em>, <em>mediana</em> e <em>moda</em> para um conjunto de notas.<br>
+          📂 <a href='arquivos/estatistica.xlsx' target='_blank'>Baixar planilha de estatística</a><br>
+          📄 <a href='arquivos/estatistica_teoria.pdf' target='_blank'>Resumo teórico</a>
+        `)">1. Estatística Básica</button></li>
+        
+        <li><button onclick="loadVideo('w512OeahfzE', event, `
+          <strong>Exercício:</strong> Crie um mapa de calor usando formatação condicional para comparar vendas por região.<br>
+          📂 <a href='arquivos/mapa_calor.xlsx' target='_blank'>Baixar planilha exemplo</a>
+        `)">2. Mapa de Calor</button></li>
+        
+        <li><button onclick="loadVideo('Cz7bh-wTeOU', event, `
+          <strong>Exercício:</strong> Utilize <code>PROCV</code> para buscar preços em uma tabela de produtos.<br>
+          📂 <a href='arquivos/procv.xlsx' target='_blank'>Planilha de produtos</a>
+        `)">3. PROCV</button></li>
+        
+        <li><button onclick="loadVideo('-IcY4AHug6M', event, `
+          <strong>Exercício:</strong> Crie uma tabela dinâmica com total de vendas por estado e mês.<br>
+          📂 <a href='arquivos/tabela_dinamica.xlsx' target='_blank'>Planilha base</a>
+        `)">4. Tabela Dinâmica</button></li>
+        
+        <li><button onclick="loadVideo('V2K63eFspuI', event, `
+          <strong>Exercício:</strong> Limpe e padronize dados de clientes removendo espaços extras e duplicados.<br>
+          📂 <a href='arquivos/tratamento_dados.xlsx' target='_blank'>Dados de clientes</a>
+        `)">5. Tratamento de Dados</button></li>
+
+        <li><button onclick="loadVideo('7AaZLClN7p0', event, `
+          <strong>Exercício:</strong> Padronize datas e números em uma planilha bagunçada.<br>
+          📂 <a href='arquivos/tratamento_dados2.xlsx' target='_blank'>Planilha alternativa</a>
+        `)">5.1 Tratamento de Dados - Outro Exemplo</button></li>
+
+        <li><button onclick="loadVideo('TvovbjBKiQs', event, `
+          <strong>Exercício:</strong> Monte o layout inicial de um Dashboard (gráficos de barras e pizza).<br>
+          📂 <a href='arquivos/dashboard1.xlsx' target='_blank'>Modelo inicial</a>
+        `)">6. Dashboard Parte 1</button></li>
+
+        <li><button onclick="loadVideo('NXrLbWhUYG8', event, `
+          <strong>Exercício:</strong> Finalize o Dashboard com filtros interativos.<br>
+          📂 <a href='arquivos/dashboard2.xlsx' target='_blank'>Dashboard completo</a>
+        `)">7. Dashboard Parte 2</button></li>
+
+        <li><button onclick="loadVideo('jCKCo2OCkCM', event, `
+          <strong>Exercício:</strong> Crie um Dashboard de acompanhamento de vendas com segmentação por região.<br>
+          📂 <a href='arquivos/dashboard_exemplo.xlsx' target='_blank'>Exemplo de Dashboard</a>
+        `)">8. Outro Exemplo Dashboard</button></li>
       </ul>
     </nav>
 
     <div class="content">
       <iframe id="videoFrame" class="video-frame" src="https://www.youtube.com/embed/E_mzcCqrK_I" allowfullscreen></iframe>
 
-      <div class="exercise-box">
+      <div class="exercise-box" id="exerciseBox">
         <h3>Exercícios sugeridos</h3>
-        <ul>
-          <li>Em BREVE ...</li>
-        </ul>
+        <p>Selecione uma aula para ver os exercícios.</p>
       </div>
     </div>
   </main>
 
   <script>
-  function loadVideo(videoId) {
-  const iframe = document.getElementById('videoFrame');
-  iframe.src = 'https://www.youtube.com/embed/' + videoId;
+    function loadVideo(videoId, event, exerciseContent) {
+      const iframe = document.getElementById('videoFrame');
+      iframe.src = 'https://www.youtube.com/embed/' + videoId;
 
-  // Remove classe ativa de todos os botões
-  document.querySelectorAll('nav ul li button').forEach(btn => btn.classList.remove('active'));
+      // Remove classe ativa de todos os botões
+      document.querySelectorAll('nav ul li button').forEach(btn => btn.classList.remove('active'));
 
-  // Adiciona classe ativa ao botão clicado
-  event.target.classList.add('active');
-}
+      // Adiciona classe ativa ao botão clicado
+      event.target.classList.add('active');
+
+      // Atualiza a caixa de exercícios
+      const exerciseBox = document.getElementById('exerciseBox');
+      exerciseBox.innerHTML = `
+        <h3>Exercícios sugeridos</h3>
+        <p>${exerciseContent}</p>
+      `;
+    }
   </script>
 </body>
 </html>
-
+	
